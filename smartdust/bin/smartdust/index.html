@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<style>
+	body{
+		margin: 0px;
+		overflow: hidden;
+		padding: 0;
+	}
+	#container{
+		position: fixed;
+		top: 0;
+		left: 0;
+		border: 1px solid black;
+	}
+	#video{
+		float: left;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 90vw;
+		height: 100vh;
+		padding: 0;
+		border: 1px solid none;
+	}
+	#video video{
+		margin: 0;
+		width: 100%;
+		height: 100%;
+		padding: 0;
+		border: 1px solid none;
+	}
+	#status{
+		float: right;
+		background: white;
+		color: red;
+		padding: 10px;
+		box-sizing: border-box;
+	}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+<div id = "container">
+	<div id = "video">
+		<video src="" mute id="myVideo">
+		</video>
+	</div>
+	<div id = "status">Status</div>
+</div>
+
+<script>
+	$(document).ready(function(){
+		var elem = document.getElementById("container"); 
+		var ele = document.getElementById("myVideo"); 
+		$("#video").ready(function(){
+			$("#video").click(function(){
+				play();
+				
+				if (elem.requestFullscreen) {
+					elem.requestFullscreen();
+				} else if (elem.mozRequestFullScreen) { /* Firefox */
+					elem.mozRequestFullScreen();
+				} else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+					elem.webkitRequestFullscreen();
+				} else if (elem.msRequestFullscreen) { /* IE/Edge */
+					elem.msRequestFullscreen();
+				}
+				$("#video").css({
+					"width"	:	"80%"
+				});
+				$("#status").css({
+					"width"	:	"20%",
+					"height"	:	"100%"
+				});
+			});
+			
+		});
+		$("#status").ready(function(){
+			
+		});
+		document.addEventListener("fullscreenchange", exitfullscreen);
+		document.addEventListener("mozfullscreenchange", exitfullscreen);
+		document.addEventListener("webkitfullscreenchange",exitfullscreen);
+		document.addEventListener("msfullscreenchange", exitfullscreen);
+		
+		function exitfullscreen(){
+			
+		}
+			
+		function play(){
+			ele.play();
+		}
+		
+		function servReq(){
+			$(document).ajaxStart(function(){
+				
+			});
+			$(document).ajaxComplete(function(event, xhr, settings){
+				
+			});
+			$.ajax({
+				type	: "GET",
+				url		: "http://192.168.43.162:8070",
+				data	: {
+					//"h"	:	"j"
+				},
+				encode	:	true,
+				success	:	function(r){
+					alert(r);
+				}
+			});
+		}
+		setInterval(servReq,1000);
+		
+	});
+</script>
+
+</body>
+</html>
