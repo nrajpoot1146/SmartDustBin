@@ -25,3 +25,5 @@
     <li>Java</li>
   </ul>
 </div>
+
+![Alt Text](https://github.com/nrajpoot1146/SmartDustBin/blob/38ad40d965c8b88cc5a61f90940190d92a86bcd7/smartdust/preview.gif)
